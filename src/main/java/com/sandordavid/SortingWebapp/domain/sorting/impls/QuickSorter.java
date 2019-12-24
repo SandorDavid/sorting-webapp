@@ -7,47 +7,47 @@ import java.util.List;
 public class QuickSorter<T extends Comparable<T>> extends SorterBase<T> {
 
     @Override
-    protected void doSort(List<T> unsortedList) {
-        this.sortListInterval(unsortedList, 0, unsortedList.size() - 1);
+    protected void doSort(List<T> returnList) {
+        this.sortListInterval(returnList, 0, returnList.size() - 1);
     }
 
-    private void sortListInterval(List<T> unsortedList, int fromI, int toI){
+    private void sortListInterval(List<T> returnList, int fromI, int toI){
         if (fromI >= toI){
             return;
         }
 
         int pivotI = fromI;
-        T pivot = unsortedList.get(pivotI);
+        T pivot = returnList.get(pivotI);
 
         int leftI = pivotI + 1;
         int rightI = toI;
 
         while (leftI < rightI){
-            while (unsortedList.get(leftI).compareTo(pivot) <= 0
-                    && leftI <= rightI
-                    && leftI < toI){
+            while (returnList.get(leftI).compareTo(pivot) <= 0 &&
+                    leftI <= rightI &&
+                    leftI < toI){
                 leftI++;
             }
 
-            while (unsortedList.get(rightI).compareTo(pivot) >= 0
-                    && leftI <= rightI
-                    && rightI > fromI) {
+            while (returnList.get(rightI).compareTo(pivot) >= 0 &&
+                    leftI <= rightI &&
+                    rightI > fromI) {
                 rightI--;
             }
 
             if (leftI < rightI) {
-                T temp = unsortedList.get(leftI);
-                unsortedList.set(leftI, unsortedList.get(rightI));
-                unsortedList.set(rightI, temp);
+                T temp = returnList.get(leftI);
+                returnList.set(leftI, returnList.get(rightI));
+                returnList.set(rightI, temp);
             }
         }
 
-        if (unsortedList.get(rightI).compareTo(pivot) < 0){
-            unsortedList.set(pivotI, unsortedList.get(rightI));
-            unsortedList.set(rightI, pivot);
+        if (returnList.get(rightI).compareTo(pivot) < 0){
+            returnList.set(pivotI, returnList.get(rightI));
+            returnList.set(rightI, pivot);
         }
 
-        this.sortListInterval(unsortedList, fromI, rightI - 1);
-        this.sortListInterval(unsortedList, rightI + 1, toI);
+        this.sortListInterval(returnList, fromI, rightI - 1);
+        this.sortListInterval(returnList, rightI + 1, toI);
     }
 }

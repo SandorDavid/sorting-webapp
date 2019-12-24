@@ -1,16 +1,23 @@
 package com.sandordavid.SortingWebapp.domain.sorting;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class SorterBase<T extends Comparable<T>> implements Sorter<T> {
 
     private long executionTime;
 
-    public void sort(List<T> unsortedList){
+    public List<T> sort(List<T> unsortedList){
+        // Important to copy the incoming list due to modification exception on AbstractLists
+        List<T> returnList = new ArrayList<>(unsortedList);
+
         long then = System.nanoTime();
-        this.doSort(unsortedList);
+        this.doSort(returnList);
         long now = System.nanoTime();
         this.executionTime = now - then;
+
+        return returnList;
     }
 
     public long lastExecutionTime(){
