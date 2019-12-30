@@ -1,7 +1,5 @@
 package com.sandordavid.SortingWebapp.domain.sorting;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public abstract class SorterBase<T extends Comparable<T>> implements Sorter<T> {

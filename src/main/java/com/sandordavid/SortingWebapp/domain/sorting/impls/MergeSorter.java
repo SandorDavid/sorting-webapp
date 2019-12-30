@@ -13,12 +13,12 @@ public class MergeSorter<T extends Comparable<T>> extends SorterBase<T> {
         return splitAndMerge(unsortedList, 0, unsortedList.size());
     }
 
-    private List<T> splitAndMerge(List<T> unsortedList, int from, int to){
-        if (to - from == 1){
+    private List<T> splitAndMerge(List<T> unsortedList, int from, int to) {
+        if (to - from == 1) {
             return new LinkedList<T>(){{
                 add(unsortedList.get(from));
             }};
-        } else if ( to - from == 0){
+        } else if (to - from == 0) {
             return new LinkedList<>();
         }
 
@@ -33,7 +33,7 @@ public class MergeSorter<T extends Comparable<T>> extends SorterBase<T> {
         T leftListElem = leftIter.next();
         T rightListElem = rightIter.next();
 
-        while(true){
+        while(true) {
                 if (leftListElem.compareTo(rightListElem) < 0) {
                     resultMergedSublist.add(leftListElem);
                     if(leftIter.hasNext()){
@@ -43,7 +43,7 @@ public class MergeSorter<T extends Comparable<T>> extends SorterBase<T> {
                         rightIter.forEachRemaining(resultMergedSublist::add);
                         break;
                     }
-                } else{
+                } else {
                     resultMergedSublist.add(rightListElem);
                     if(rightIter.hasNext()){
                         rightListElem = rightIter.next();

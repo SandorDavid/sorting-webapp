@@ -17,11 +17,11 @@ public class SelectionSorter<T extends Comparable<T>> extends SorterBase<T> {
             for (int secondI = firstI + 1; secondI < returnList.size(); secondI++) {
                 if (returnList.get(firstI).compareTo(returnList.get(secondI)) > 0 &&
                         (markedLowestI == -1 ||
-                                returnList.get(markedLowestI).compareTo(returnList.get(secondI)) > 0)){
+                                returnList.get(markedLowestI).compareTo(returnList.get(secondI)) > 0)) {
                     markedLowestI = secondI;
                 }
             }
-            if (markedLowestI != -1){
+            if (markedLowestI != -1) {
                 T markedLowest = returnList.get(markedLowestI);
                 returnList.set(markedLowestI, returnList.get(firstI));
                 returnList.set(firstI, markedLowest);

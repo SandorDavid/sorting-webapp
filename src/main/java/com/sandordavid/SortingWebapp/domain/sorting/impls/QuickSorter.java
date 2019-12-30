@@ -13,8 +13,8 @@ public class QuickSorter<T extends Comparable<T>> extends SorterBase<T> {
         return returnList;
     }
 
-    private void sortListInterval(List<T> returnList, int fromI, int toI){
-        if (fromI >= toI){
+    private void sortListInterval(List<T> returnList, int fromI, int toI) {
+        if (fromI >= toI) {
             return;
         }
 

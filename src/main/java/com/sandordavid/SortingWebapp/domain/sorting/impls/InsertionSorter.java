@@ -8,7 +8,7 @@ import java.util.List;
 public class InsertionSorter<T extends Comparable<T>> extends SorterBase<T> {
 
     @Override
-    protected List<T> doSort(List<T> unsortedList){
+    protected List<T> doSort(List<T> unsortedList) {
         List<T> returnList = new ArrayList<>(unsortedList);
 
         for (int mainI = 0; mainI < returnList.size(); mainI++) {
