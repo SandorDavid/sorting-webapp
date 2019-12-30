@@ -14,10 +14,12 @@ public class MergeSorter<T extends Comparable<T>> extends SorterBase<T> {
     }
 
     private List<T> splitAndMerge(List<T> unsortedList, int from, int to){
-        if(to - from == 1){
+        if (to - from == 1){
             return new LinkedList<T>(){{
                 add(unsortedList.get(from));
             }};
+        } else if ( to - from == 0){
+            return new LinkedList<>();
         }
 
         int splittingPoint = from + Math.round( (float)( to - from ) / 2 );
