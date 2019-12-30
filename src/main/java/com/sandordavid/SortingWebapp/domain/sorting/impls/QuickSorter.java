@@ -2,13 +2,15 @@ package com.sandordavid.SortingWebapp.domain.sorting.impls;
 
 import com.sandordavid.SortingWebapp.domain.sorting.SorterBase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuickSorter<T extends Comparable<T>> extends SorterBase<T> {
-
     @Override
-    protected void doSort(List<T> returnList) {
-        this.sortListInterval(returnList, 0, returnList.size() - 1);
+    protected List<T> doSort(List<T> unsortedList) {
+        List<T> returnList = new ArrayList<>(unsortedList);
+        sortListInterval(returnList, 0, returnList.size() - 1);
+        return returnList;
     }
 
     private void sortListInterval(List<T> returnList, int fromI, int toI){
@@ -47,7 +49,7 @@ public class QuickSorter<T extends Comparable<T>> extends SorterBase<T> {
             returnList.set(rightI, pivot);
         }
 
-        this.sortListInterval(returnList, fromI, rightI - 1);
-        this.sortListInterval(returnList, rightI + 1, toI);
+        sortListInterval(returnList, fromI, rightI - 1);
+        sortListInterval(returnList, rightI + 1, toI);
     }
 }

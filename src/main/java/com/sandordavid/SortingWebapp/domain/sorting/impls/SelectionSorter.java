@@ -2,12 +2,15 @@ package com.sandordavid.SortingWebapp.domain.sorting.impls;
 
 import com.sandordavid.SortingWebapp.domain.sorting.SorterBase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SelectionSorter<T extends Comparable<T>> extends SorterBase<T> {
 
     @Override
-    protected void doSort(List<T> returnList) {
+    protected List<T> doSort(List<T> unsortedList) {
+        List<T> returnList = new ArrayList<>(unsortedList);
+
         for (int firstI = 0; firstI < returnList.size(); firstI++) {
             int markedLowestI = -1;
 
@@ -24,5 +27,6 @@ public class SelectionSorter<T extends Comparable<T>> extends SorterBase<T> {
                 returnList.set(firstI, markedLowest);
             }
         }
+        return returnList;
     }
 }

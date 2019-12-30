@@ -9,11 +9,8 @@ public abstract class SorterBase<T extends Comparable<T>> implements Sorter<T> {
     private long executionTime;
 
     public List<T> sort(List<T> unsortedList){
-        // Important to copy the incoming list due to modification exception on AbstractLists
-        List<T> returnList = new ArrayList<>(unsortedList);
-
         long then = System.nanoTime();
-        this.doSort(returnList);
+        List<T> returnList = doSort(unsortedList);
         long now = System.nanoTime();
         this.executionTime = now - then;
 
@@ -27,5 +24,5 @@ public abstract class SorterBase<T extends Comparable<T>> implements Sorter<T> {
         return executionTime;
     }
 
-    protected abstract void doSort(List<T> unsortedList);
+    protected abstract List<T> doSort(List<T> unsortedList);
 }
