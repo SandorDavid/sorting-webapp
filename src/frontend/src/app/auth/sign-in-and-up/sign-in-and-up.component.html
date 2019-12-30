@@ -1,0 +1,63 @@
+<div id="container" fxLayout="row" fxLayoutAlign="center center">
+    <div 
+    fxFlex="70"
+    fxFlex.lt-md="75"
+    fxFlex.lt-sm="80"
+    >
+        <div fxLayout="row" fxLayoutAlign="space-evenly center">
+            <div 
+                fxFlex="50" 
+                id="toggle-div" 
+                fxLayout="column" 
+                fxLayoutAlign="space-evenly center" 
+                fxLayoutGap="8%"
+            >
+                <div>
+                    Sign-up or Sign-in
+                </div>
+                <mat-slide-toggle></mat-slide-toggle>
+            </div>
+            <div fxFlex="50" id="form-div">
+                <form (ngSubmit)="onSubmit(f)" #f="ngForm" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-form-field fxFlex [hideRequiredMarker]="true">
+                        <input 
+                            matInput
+                            placeholder="Username" 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            ngModel 
+                            required
+                        >
+                    </mat-form-field>
+                    <mat-form-field fxFlex [hideRequiredMarker]="true">
+                        <input 
+                            matInput 
+                            placeholder="Password"
+                            [type]="hidePassword ? 'password' : 'text'" 
+                            id="password" 
+                            name="password" 
+                            ngModel 
+                            required
+                        >
+                        <button 
+                            type="button" 
+                            mat-icon-button 
+                            matSuffix 
+                            (click)="hidePassword = !hidePassword"
+                        >
+                            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <button
+                        type="submit"
+                        mat-raised-button
+                        color="primary"
+                    >
+                    Sign-in or Sign-up
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
