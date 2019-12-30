@@ -1,6 +1,7 @@
 package com.sandordavid.SortingWebapp.domain.sorting;
 
 import com.sandordavid.SortingWebapp.domain.sorting.impls.InsertionSorter;
+import com.sandordavid.SortingWebapp.domain.sorting.impls.MergeSorter;
 import com.sandordavid.SortingWebapp.domain.sorting.impls.QuickSorter;
 import com.sandordavid.SortingWebapp.domain.sorting.impls.SelectionSorter;
 
@@ -45,6 +46,7 @@ public class SorterTest {
     public static Collection<Class> implementationsToTest() {
         return Arrays.asList(
                 InsertionSorter.class,
+                MergeSorter.class,
                 QuickSorter.class,
                 SelectionSorter.class
         );
