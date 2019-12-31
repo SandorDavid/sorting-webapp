@@ -12,10 +12,14 @@
                 fxLayoutAlign="space-evenly center" 
                 fxLayoutGap="8%"
             >
-                <div>
-                    Sign-up or Sign-in
+                <div class="sign-in-up-holder">
+                    <span>Sign-</span>
+                    <span [@isSignUpState]="isSignUp">{{isSignUp ? 'up' : 'in'}}</span>
                 </div>
-                <mat-slide-toggle></mat-slide-toggle>
+                <mat-slide-toggle 
+                    [checked]="isSignUp"
+                    (change)="isSignUp = $event.source.checked"
+                ></mat-slide-toggle>
             </div>
             <div fxFlex="50" id="form-div">
                 <form (ngSubmit)="onSubmit(f)" #f="ngForm" fxLayout="column" fxLayoutAlign="space-evenly center">
@@ -53,8 +57,11 @@
                         type="submit"
                         mat-raised-button
                         color="primary"
+                        [disabled]="f.invalid"
+                        class="submit-button"
                     >
-                    Sign-in or Sign-up
+                    <span>Sign-</span>
+                    <span [@isSignUpState]="isSignUp">{{isSignUp ? 'up' : 'in'}}</span>
                     </button>
                 </form>
             </div>

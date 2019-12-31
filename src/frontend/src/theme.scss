@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$sortingwebapp-primary: mat-palette($mat-blue, 600);
+$sortingwebapp-accent:  mat-palette($mat-yellow, 500);
+$sortingwebapp-warn:    mat-palette($mat-deep-orange);
+
+$sortingwebapp-theme: mat-light-theme($sortingwebapp-primary, $sortingwebapp-accent, $sortingwebapp-warn);
+
+@include angular-material-theme($sortingwebapp-theme);
+@include mat-slide-toggle-theme(mat-light-theme($sortingwebapp-primary, $sortingwebapp-accent));
