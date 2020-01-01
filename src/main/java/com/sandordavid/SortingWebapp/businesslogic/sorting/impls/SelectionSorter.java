@@ -1,6 +1,6 @@
-package com.sandordavid.SortingWebapp.domain.sorting.impls;
+package com.sandordavid.SortingWebapp.businesslogic.sorting.impls;
 
-import com.sandordavid.SortingWebapp.domain.sorting.SorterBase;
+import com.sandordavid.SortingWebapp.businesslogic.sorting.SorterBase;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,9 @@
-package com.sandordavid.SortingWebapp.domain.sorting;
+package com.sandordavid.SortingWebapp.businesslogic.sorting;
 
-import com.sandordavid.SortingWebapp.domain.sorting.impls.InsertionSorter;
-import com.sandordavid.SortingWebapp.domain.sorting.impls.MergeSorter;
-import com.sandordavid.SortingWebapp.domain.sorting.impls.QuickSorter;
-import com.sandordavid.SortingWebapp.domain.sorting.impls.SelectionSorter;
+import com.sandordavid.SortingWebapp.businesslogic.sorting.impls.MergeSorter;
+import com.sandordavid.SortingWebapp.businesslogic.sorting.impls.InsertionSorter;
+import com.sandordavid.SortingWebapp.businesslogic.sorting.impls.QuickSorter;
+import com.sandordavid.SortingWebapp.businesslogic.sorting.impls.SelectionSorter;
 
 import org.junit.Before;
 import org.junit.Test;
