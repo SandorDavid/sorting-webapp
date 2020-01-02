@@ -7,6 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { AngularMaterialModule } from './angular-material.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -15,10 +19,12 @@ import { AngularMaterialModule } from './angular-material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    AuthModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
