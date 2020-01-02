@@ -1,34 +1,41 @@
 import * as AuthActions  from './auth.actions';
 
-export interface State {
+export interface AuthState {
+    isSignUpMode: boolean;
     authenticated: boolean;
     token: string;
 }
 
-const initialState: State = {
+const initialState: AuthState = {
+    isSignUpMode: false,
     authenticated: false,
     token: null
 }
 
-export function authReducer(state: State = initialState, action: AuthActions.AuthActions){
+export function authReducer(state: AuthState = initialState, action: AuthActions.AuthActions){
     switch (action.type) {
-        case (AuthActions.LOGIN):
-        return {
-            ...state,
-            authenticated: true
-        };
-        case (AuthActions.LOGOUT):
-        return {
-            ...state,
-            token: null,
-            authenticated: false
-        };
+        case (AuthActions.SWITCH_BETWEEN_SIGN_IN_AND_UP_MODE):
+            return {
+                ...state,
+                isSignUpMode: !state.isSignUpMode
+            }
+        case (AuthActions.SET_AUTHENTICATED):
+            return {
+                ...state,
+                authenticated: true
+            };
         case (AuthActions.SET_TOKEN):
         return {
             ...state,
             token: action.payload
         };
+        case (AuthActions.SIGN_OUT):
+            return {
+                ...state,
+                token: null,
+                authenticated: false
+            };
         default:
-        return state;
+            return state;
     }
 }

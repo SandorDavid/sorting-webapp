@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment'
 import * as AuthActions from './auth.actions';
 import { User } from '../user.model';
 import { UserToken } from '../usertoken.model';
-import { State as AuthState} from './auth.reducers';
+import { AuthState } from './auth.reducers';
 import { AppState } from 'src/app/store/app.reducer';
 
 @Injectable()
@@ -28,14 +28,15 @@ export class AuthEffects {
 
       withLatestFrom(this.store.select('auth')),
 
-      switchMap(([authData, state]) => {
+      switchMap(([authData, state]: [User, AuthState]) => {
+        const isSignUpMode = state.isSignUpMode;
         return this.http.post<UserToken>(environment.baseURL + 'authenticate', authData)
       }),
 
       mergeMap((token: UserToken) => {
         return [
           {
-            type: AuthActions.LOGIN
+            type: AuthActions.SET_AUTHENTICATED
           },
           {
             type: AuthActions.SET_TOKEN,
@@ -51,7 +52,7 @@ export class AuthEffects {
   authLogout$ = this.actions$
       .pipe(
 
-        ofType(AuthActions.LOGOUT),
+        ofType(AuthActions.SIGN_OUT),
 
         tap(() => {
           this.router.navigate(['/']);

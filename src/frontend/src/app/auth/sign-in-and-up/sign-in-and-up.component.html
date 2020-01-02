@@ -12,13 +12,13 @@
                 fxLayoutAlign="space-evenly center" 
                 fxLayoutGap="8%"
             >
-                <div class="sign-in-up-holder">
+                <h1>
                     <span>Sign-</span>
-                    <span [@isSignUpState]="isSignUp">{{isSignUp ? 'up' : 'in'}}</span>
-                </div>
+                    <span [@isSignUpState]="isSignUpMode$ | async">{{(isSignUpMode$ | async) ? 'up' : 'in'}}</span>
+                </h1>
                 <mat-slide-toggle 
-                    [checked]="isSignUp"
-                    (change)="isSignUp = $event.source.checked"
+                    [checked]="isSignUpMode$ | async"
+                    (change)="onSwitchToggle()"
                 ></mat-slide-toggle>
             </div>
             <div fxFlex="50" id="form-div">
@@ -61,7 +61,7 @@
                         class="submit-button"
                     >
                     <span>Sign-</span>
-                    <span [@isSignUpState]="isSignUp">{{isSignUp ? 'up' : 'in'}}</span>
+                    <span [@isSignUpState]="isSignUpMode$ | async">{{(isSignUpMode$ | async) ? 'up' : 'in'}}</span>
                     </button>
                 </form>
             </div>

@@ -1,4 +1,4 @@
-<div id="app" fxLayout="row" fxLayoutAlign="center center">
+<div id="app" [@isSignUpState]="isSignUpMode$ | async" fxLayout="row" fxLayoutAlign="center center">
     <div id="route" fxFlex="75">
         <router-outlet></router-outlet>
     </div>

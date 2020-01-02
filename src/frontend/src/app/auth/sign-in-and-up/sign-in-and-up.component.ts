@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
+import { AuthState } from '../store/auth.reducers';
+import { SwitchBetweenSignInAndUpMode } from '../store/auth.actions';
 
 @Component({
   selector: 'app-sign-in-and-up',
@@ -14,7 +20,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       state('true', style({
         'opacity': '1'
       })),
-      transition('* => *', [
+      transition('false <=> true', [
         style({
           'opacity':'0'
         }),
@@ -25,12 +31,24 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 })
 export class SignInAndUpComponent implements OnInit {
 
-  hidePassword: boolean = true;
-  isSignUp: boolean = false;
+  private hidePassword: boolean;
+  private isSignUpMode$: Observable<boolean>;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
+    this.hidePassword = false;
+    this.isSignUpMode$ = this.store
+      .select('auth')
+      .pipe(
+        map((state: AuthState) =>{
+          return state.isSignUpMode;
+        })
+      )
+  }
+
+  onSwitchToggle(){
+    this.store.dispatch(new SwitchBetweenSignInAndUpMode());
   }
 
   onSubmit(f: NgForm){
