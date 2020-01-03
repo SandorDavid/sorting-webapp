@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { AppState } from './store/app.reducer';
 import { AuthState } from './auth/store/auth.reducers';
-import { style, state, trigger, transition, animate } from '@angular/animations';
+import { style, state, trigger, transition, animate, query, animateChild, group } from '@angular/animations';
 
 
 @Component({
@@ -21,7 +21,12 @@ import { style, state, trigger, transition, animate } from '@angular/animations'
       state('true', style({
         'background-color': '#ffeb3b'
       })),
-      transition('false <=> true', animate(1000))
+      transition('false <=> true', [
+        group([
+          query("@*", [animateChild()], {optional: true}),
+          animate(800)
+        ])
+      ])
     ])
   ]
 })
