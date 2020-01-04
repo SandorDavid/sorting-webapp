@@ -4,7 +4,7 @@
 
 $sortingwebapp-primary: mat-palette($mat-blue, 600);
 $sortingwebapp-accent:  mat-palette($mat-yellow, 500);
-$sortingwebapp-warn:    mat-palette($mat-deep-orange);
+$sortingwebapp-warn:    mat-palette($mat-deep-purple, 900);
 
 $sortingwebapp-theme: mat-light-theme($sortingwebapp-primary, $sortingwebapp-accent, $sortingwebapp-warn);
 
