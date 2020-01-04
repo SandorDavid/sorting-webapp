@@ -30,7 +30,7 @@ import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor'
     AngularMaterialModule,
     AuthModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([CoreEffects, AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
