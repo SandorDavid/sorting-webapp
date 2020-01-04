@@ -4,11 +4,11 @@ import { Observable, pipe } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
-import { AppState } from '../store/app.reducer';
-import { AuthState } from './store/auth.reducers';
+import { AppState } from '../../store/app.reducer';
+import { AuthState } from '../../auth/store/auth.reducers';
 
 @Injectable()
-export class AuthInterceptor implements HttpInterceptor {
+export class JwtInterceptor implements HttpInterceptor {
 
     constructor(private store: Store<AppState>){}
 

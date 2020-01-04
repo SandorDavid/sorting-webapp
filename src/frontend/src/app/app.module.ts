@@ -10,16 +10,19 @@ import { AngularMaterialModule } from './util/angular-material.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { CoreEffects } from './store/core.effects';
 import { AuthEffects } from './auth/store/auth.effects';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { JwtInterceptor } from './util/interceptor/jwt.interceptor';
 import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor';
+import { SnackComponent } from './util/snack/snack.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SnackComponent
   ],
   imports: [
     BrowserModule,
