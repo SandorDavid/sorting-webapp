@@ -53,7 +53,6 @@ export class SignInAndUpComponent implements OnInit {
   }
 
   onSubmit(f: NgForm){
-    console.log(f.value);
     this.store.dispatch(new TrySignInOrUp(f.value as User));
   }
 }

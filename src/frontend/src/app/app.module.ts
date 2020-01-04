@@ -6,14 +6,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { AngularMaterialModule } from './angular-material.module';
+import { AngularMaterialModule } from './util/angular-material.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/store/auth.effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { JwtInterceptor } from './util/interceptor/jwt.interceptor';
+import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,11 @@ import { environment } from '../environments/environment';
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}
+  ],
+  entryComponents: [SnackComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

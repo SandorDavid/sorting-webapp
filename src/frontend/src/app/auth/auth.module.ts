@@ -4,9 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { SignInAndUpComponent } from './sign-in-and-up/sign-in-and-up.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AngularMaterialModule } from '../angular-material.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './auth.interceptor';
+import { AngularMaterialModule } from '../util/angular-material.module';
 
 @NgModule({
     declarations: [SignInAndUpComponent],
@@ -16,9 +14,7 @@ import { AuthInterceptor } from './auth.interceptor';
         FlexLayoutModule,
         AngularMaterialModule
     ],
-    providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
-    ],
+    providers: [],
 })
 export class AuthModule{
 
