@@ -37,7 +37,7 @@ export class SignInAndUpComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.hidePassword = false;
+    this.hidePassword = true;
     this.isSignUpMode$ = this.store
       .select('auth')
       .pipe(
