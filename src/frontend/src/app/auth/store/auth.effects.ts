@@ -29,18 +29,21 @@ export class AuthEffects {
       withLatestFrom(this.store.select('auth')),
 
       switchMap(([authData, state]: [User, AuthState]) => {
-        const isSignUpMode = state.isSignUpMode;
-        return this.http.post<UserToken>(environment.baseURL + 'authenticate', authData)
+        if (state.isSignUpMode){
+          return this.http.post<UserToken>(environment.baseURL + '/auth/sign-up', authData)
+        } else {
+          return this.http.post<UserToken>(environment.baseURL + '/auth/sign-in', authData)
+        }
       }),
 
-      mergeMap((token: UserToken) => {
+      mergeMap((tokenWrapper: UserToken) => {
         return [
           {
             type: AuthActions.SET_AUTHENTICATED
           },
           {
             type: AuthActions.SET_TOKEN,
-            payload: token.jwttoken
+            payload: tokenWrapper.token
           }
         ];
       })

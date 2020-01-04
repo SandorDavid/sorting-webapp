@@ -6,7 +6,8 @@ import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducer';
 import { AuthState } from '../store/auth.reducers';
-import { SwitchBetweenSignInAndUpMode } from '../store/auth.actions';
+import { SwitchBetweenSignInAndUpMode, TrySignInOrUp } from '../store/auth.actions';
+import { User } from '../user.model';
 
 @Component({
   selector: 'app-sign-in-and-up',
@@ -53,5 +54,6 @@ export class SignInAndUpComponent implements OnInit {
 
   onSubmit(f: NgForm){
     console.log(f.value);
+    this.store.dispatch(new TrySignInOrUp(f.value as User));
   }
 }

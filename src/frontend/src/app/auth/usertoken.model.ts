@@ -1,3 +1,3 @@
 export class UserToken {
-    constructor(public jwttoken: string){}
+    constructor(public token: string){}
 }
