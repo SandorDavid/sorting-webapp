@@ -1,4 +1,4 @@
-package com.sandordavid.SortingWebapp.auth.dto;
+package com.sandordavid.SortingWebapp.domain.dto;
 
 import java.io.Serializable;
 

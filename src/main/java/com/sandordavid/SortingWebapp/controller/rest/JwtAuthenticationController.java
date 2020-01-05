@@ -1,53 +1,41 @@
 package com.sandordavid.SortingWebapp.controller.rest;
 
-import com.sandordavid.SortingWebapp.auth.JwtTokenUtil;
-import com.sandordavid.SortingWebapp.auth.JwtUserDetailsService;
-import com.sandordavid.SortingWebapp.auth.dto.JwtRequest;
-import com.sandordavid.SortingWebapp.auth.dto.JwtResponse;
+import com.sandordavid.SortingWebapp.domain.dto.JwtRequest;
+import com.sandordavid.SortingWebapp.domain.dto.JwtResponse;
 
+import com.sandordavid.SortingWebapp.domain.model.User_;
+import com.sandordavid.SortingWebapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @RestController
 @CrossOrigin
+@RequestMapping("/auth")
 public class JwtAuthenticationController {
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private UserService userService;
 
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    @PostMapping("/sign-up")
+    public ResponseEntity<JwtResponse> signUp(@Valid @RequestBody User_ newUser) {
+        userService.saveUser(newUser);
 
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
-
-    @PostMapping("/authenticate")
-    public ResponseEntity<JwtResponse> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
-
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(authenticationRequest.getUsername());
-
-        final String token = jwtTokenUtil.generateToken(userDetails);
+        String token = userService.provideJwtToken(newUser.getUsername());
 
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    private void authenticate(String username, String password) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
+    @PostMapping("/sign-in")
+    public ResponseEntity<JwtResponse> signIn(@Valid @RequestBody User_ registeredUser) {
+        userService.authenticate(registeredUser.getUsername(), registeredUser.getPassword());
+
+        String token = userService.provideJwtToken(registeredUser.getUsername());
+
+        return ResponseEntity.ok(new JwtResponse(token));
     }
+
 }
