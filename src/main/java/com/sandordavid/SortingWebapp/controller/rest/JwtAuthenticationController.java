@@ -1,6 +1,5 @@
 package com.sandordavid.SortingWebapp.controller.rest;
 
-import com.sandordavid.SortingWebapp.domain.dto.JwtRequest;
 import com.sandordavid.SortingWebapp.domain.dto.JwtResponse;
 
 import com.sandordavid.SortingWebapp.domain.model.User_;

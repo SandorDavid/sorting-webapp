@@ -1,6 +1,5 @@
 package com.sandordavid.SortingWebapp.service;
 
-import com.sandordavid.SortingWebapp.domain.dto.JwtRequest;
 import com.sandordavid.SortingWebapp.domain.model.User_;
 
 public interface UserService {
