@@ -7,6 +7,11 @@ import { AppState } from './store/app.reducer';
 import { AuthState } from './auth/store/auth.reducers';
 import { style, state, trigger, transition, animate, query, animateChild, group } from '@angular/animations';
 
+enum AuthenticationState {
+  signIn = 'signIn',
+  signUp = 'signUp',
+  authenticated = 'authenticated'
+}
 
 @Component({
   selector: 'app-root',
@@ -14,14 +19,17 @@ import { style, state, trigger, transition, animate, query, animateChild, group 
   styleUrls: ['./app.component.sass'],
   animations: [
     //Using explicit colors here, due to the retrieving of material theme colors being extremely hacky/impossible
-    trigger('isSignUpState', [
-      state('false', style({
+    trigger('authenticationState', [
+      state(AuthenticationState.authenticated, style({
+        'background-color': '#f57c00'
+      })),
+      state(AuthenticationState.signIn, style({
         'background-color': '#1e88e5'
       })),
-      state('true', style({
+      state(AuthenticationState.signUp, style({
         'background-color': '#ffeb3b'
       })),
-      transition('false <=> true', [
+      transition('* <=> *', [
         group([
           query("@*", [animateChild()], {optional: true}),
           animate(800)
@@ -32,16 +40,22 @@ import { style, state, trigger, transition, animate, query, animateChild, group 
 })
 export class AppComponent {
 
-  private isSignUpMode$: Observable<boolean>;
+  private authenticationState$: Observable<AuthenticationState>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.isSignUpMode$ = this.store
+    this.authenticationState$ = this.store
       .select('auth')
       .pipe(
         map((state: AuthState) =>{
-          return state.isSignUpMode;
+          if (state.authenticated){
+            return AuthenticationState.authenticated;
+          } else if (state.isSignUpMode){
+            return AuthenticationState.signUp
+          } else{
+            return AuthenticationState.signIn;
+          }
         })
       )
   }

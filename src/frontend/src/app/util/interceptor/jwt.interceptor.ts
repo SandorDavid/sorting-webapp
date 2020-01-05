@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
