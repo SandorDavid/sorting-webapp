@@ -46,11 +46,14 @@ export class AuthEffects {
             payload: tokenWrapper.token
           }
         ];
+      }),
+
+      tap(() => {
+        this.router.navigate(['/sorting']);
       })
 
     );
 
-  
   @Effect({dispatch: false})
   authLogout$ = this.actions$
       .pipe(
