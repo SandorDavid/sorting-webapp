@@ -1,4 +1,6 @@
-package com.sandordavid.SortingWebapp.businesslogic.sorting;
+package com.sandordavid.SortingWebapp.core.sorting;
+
+import com.sandordavid.SortingWebapp.domain.exception.NoExecutionException;
 
 import java.util.List;
 

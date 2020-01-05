@@ -1,6 +1,6 @@
-package com.sandordavid.SortingWebapp.businesslogic.sorting.impls;
+package com.sandordavid.SortingWebapp.core.sorting.impls;
 
-import com.sandordavid.SortingWebapp.businesslogic.sorting.SorterBase;
+import com.sandordavid.SortingWebapp.core.sorting.SorterBase;
 
 import java.util.Iterator;
 import java.util.LinkedList;

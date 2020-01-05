@@ -1,4 +1,4 @@
-package com.sandordavid.SortingWebapp.businesslogic.sorting;
+package com.sandordavid.SortingWebapp.core.sorting;
 
 import java.util.List;
 
