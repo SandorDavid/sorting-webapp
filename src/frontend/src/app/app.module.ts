@@ -22,12 +22,15 @@ import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor'
 import { SnackComponent } from './util/snack/snack.component';
 import { SortingComponent } from './sorting/sorting/sorting.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SortingEffects } from './sorting/store/sorting.effects';
+import { AlgoNameFormatter } from './sorting/algo-name-formatter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SnackComponent,
-    SortingComponent
+    SortingComponent,
+    AlgoNameFormatter
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularMaterialModule,
     AuthModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([CoreEffects, AuthEffects]),
+    EffectsModule.forRoot([CoreEffects, AuthEffects, SortingEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot({ routerState: RouterState.Minimal}),
   ],
