@@ -21,6 +21,7 @@ import { JwtInterceptor } from './util/interceptor/jwt.interceptor';
 import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor';
 import { SnackComponent } from './util/snack/snack.component';
 import { SortingComponent } from './sorting/sorting/sorting.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SortingComponent } from './sorting/sorting/sorting.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AngularMaterialModule,

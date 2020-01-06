@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.reducer';
 
 @Component({
   selector: 'app-sorting',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SortingComponent implements OnInit {
 
-  constructor() { }
+  sortingForm: FormGroup;
+  algorithms = ['quick', 'merge'];
+  
+  constructor(store: Store<AppState>) { }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  private initForm() {
+    this.sortingForm = new FormGroup({
+      'toSort': new FormControl('', Validators.required),
+      'algorithm': new FormControl('', Validators.required)
+    })
   }
 
 }

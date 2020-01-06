@@ -1,1 +1,47 @@
-<p>sorting works!</p>
+<form 
+[formGroup]="sortingForm"
+(ngSubmit)="onSubmit()"
+id="container" 
+fxLayout="row" 
+fxLayoutAlign="space-between center"
+>
+    <div class="el-container" fxFlex="33%">
+        <mat-form-field>
+            <mat-label>Strings or numbers to sort</mat-label>
+            <textarea 
+            matInput 
+            formControlName="toSort" 
+            cdkTextareaAutosize 
+            cdkAutosizeMinRows=10 
+            cdkAutosizeMaxRows=10></textarea>
+        </mat-form-field>
+    </div>
+    <div class="el-container" fxFlex="17.5%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30%">
+        <mat-form-field fxFlex="10%" [hideRequiredMarker]="true">
+            <mat-label>Choose algorithm</mat-label>
+            <mat-select
+            formControlName="algorithm"
+            >
+                <mat-option *ngFor="let algorithm of algorithms" [value]="algorithm">{{algorithm | titlecase}}</mat-option>
+            </mat-select
+            >      
+        </mat-form-field>
+        <button 
+        type="submit" 
+        fxFlex="10%"
+        mat-flat-button 
+        color="primary">Let's sort!</button>
+    </div>
+    <div class="el-container" fxFlex="33%">
+        <mat-form-field>
+            <mat-label>Sorted output</mat-label>
+            <textarea 
+            matInput 
+            cdkTextareaAutosize 
+            cdkAutosizeMinRows=10 
+            cdkAutosizeMaxRows=10
+            disabled
+            ></textarea>
+        </mat-form-field>    
+    </div>
+</form>
