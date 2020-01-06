@@ -38,13 +38,8 @@ export class AuthEffects {
 
       mergeMap((tokenWrapper: UserToken) => {
         return [
-          {
-            type: AuthActions.SET_AUTHENTICATED
-          },
-          {
-            type: AuthActions.SET_TOKEN,
-            payload: tokenWrapper.token
-          }
+          new AuthActions.SetAuthenticated(), 
+          new AuthActions.SetToken(tokenWrapper.token)
         ];
       }),
 
