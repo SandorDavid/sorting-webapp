@@ -4,7 +4,7 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppState } from 'src/app/store/app.reducer';
 import { Store } from '@ngrx/store';
-import { DisplayErrors } from 'src/app/store/core.actions';
+import { DisplaySnackMessages } from 'src/app/store/core.actions';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -24,7 +24,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                         errList.push(err.message);    
                     }
                     
-                    this.store.dispatch(new DisplayErrors(errList));
+                    this.store.dispatch(new DisplaySnackMessages(errList));
                 }
 
                 return throwError(error);

@@ -13,9 +13,9 @@ export class CoreEffects {
     displayErrors$ = this.actions$
         .pipe(
             
-            ofType(CoreActions.DISPLAY_ERRORS),
+            ofType(CoreActions.DISPLAY_SNACK_MESSAGES),
 
-            map((action: CoreActions.DisplayErrors) => {
+            map((action: CoreActions.DisplaySnackMessages) => {
                 return action.payload;
             }),
             

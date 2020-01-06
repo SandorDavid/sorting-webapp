@@ -1,7 +1,7 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({
-    name: 'format'
+    name: 'algoNameFormatter'
 })
 export class AlgoNameFormatter implements PipeTransform {
     

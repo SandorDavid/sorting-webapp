@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { SortingService } from '../sorting.service';
+import { SortingResponse } from '../sortingHTTP.model';
+import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducer';
-import { Observable } from 'rxjs';
-import { TryFetchAlgorithmNames } from '../store/sorting.actions';
-import { SortingState } from '../store/sorting.reducers';
-import { tap, map } from 'rxjs/operators';
+import { DisplaySnackMessages } from 'src/app/store/core.actions';
 
 @Component({
   selector: 'app-sorting',
@@ -14,28 +15,34 @@ import { tap, map } from 'rxjs/operators';
 })
 export class SortingComponent implements OnInit {
 
+  algorithmNames$: Observable<String[]>;
   sortingForm: FormGroup;
-  algorithmNames$: Observable<Array<String>>;
+  sortingResponse$: Observable<SortingResponse>;
   
-  constructor(public store: Store<AppState>) { }
+  constructor(private sortingService: SortingService, private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.getAlgorithmNames();
     this.initForm();
   }
 
   private initForm() {
+    this.algorithmNames$ = this.sortingService.getAlgorithmNames$();
+    this.sortingResponse$ = of(new SortingResponse([], 0));  
+
     this.sortingForm = new FormGroup({
       'toSort': new FormControl('', Validators.required),
       'algorithm': new FormControl('', Validators.required)
     })
   }
 
-  private getAlgorithmNames(){
-    this.store.dispatch(new TryFetchAlgorithmNames());
-    this.algorithmNames$ = this.store.select('sorting')
+  onSubmit(){
+    this.sortingResponse$ = this.sortingService.getSortedList$(this.sortingForm.value)
       .pipe(
-        map((state: SortingState) => { return state.algorithmNames })
+        tap((resp: SortingResponse) => {
+          this.store.dispatch(new DisplaySnackMessages(
+            ['The sorter finished in ' + resp.executionTime + ' nanoseconds!']
+          ))
+        })
       )
   }
 

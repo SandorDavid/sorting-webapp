@@ -7,7 +7,7 @@ fxLayoutAlign="space-between center"
 >
     <div class="el-container" fxFlex="33%">
         <mat-form-field>
-            <mat-label>Strings or numbers to sort</mat-label>
+            <mat-label>Items to sort</mat-label>
             <textarea 
             matInput 
             formControlName="toSort" 
@@ -22,7 +22,7 @@ fxLayoutAlign="space-between center"
             <mat-select
             formControlName="algorithm"
             >
-                <mat-option *ngFor="let algoName of algorithmNames$ | async" [value]="algoName">{{algoName | format}}</mat-option>
+                <mat-option *ngFor="let algoName of algorithmNames$ | async" [value]="algoName">{{algoName | algoNameFormatter}}</mat-option>
             </mat-select
             >      
         </mat-form-field>
@@ -33,14 +33,15 @@ fxLayoutAlign="space-between center"
         color="primary">Let's sort!</button>
     </div>
     <div class="el-container" fxFlex="33%">
-        <mat-form-field>
-            <mat-label>Sorted output will come here</mat-label>
+        <mat-form-field >
+            <mat-label>Sorted output</mat-label>
             <textarea 
             matInput 
             cdkTextareaAutosize 
             cdkAutosizeMinRows=10 
             cdkAutosizeMaxRows=10
             disabled
+            [value]="(sortingResponse$ | async)?.sortedOutput | sortedOutputFormatter"
             ></textarea>
         </mat-form-field>    
     </div>

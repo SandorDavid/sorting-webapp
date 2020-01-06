@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter @NoArgsConstructor
 public class SortingRequest {
 
-    private String algorithmName;
-    private String unsortedInputString;
+    private String algorithm;
+    private String toSort;
 
 }
