@@ -21,10 +21,10 @@ enum AuthenticationState {
     //Using explicit colors here, due to the retrieving of material theme colors being extremely hacky/impossible
     trigger('authenticationState', [
       state(AuthenticationState.authenticated, style({
-        'background-color': '#f57c00'
+        'background-color': '#1e88e5'
       })),
       state(AuthenticationState.signIn, style({
-        'background-color': '#1e88e5'
+        'background-color': '#fa8100'
       })),
       state(AuthenticationState.signUp, style({
         'background-color': '#ffeb3b'

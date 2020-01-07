@@ -1,48 +1,76 @@
-<form 
-[formGroup]="sortingForm"
-(ngSubmit)="onSubmit()"
-id="container" 
-fxLayout="row" 
-fxLayoutAlign="space-between center"
+<div 
+fxLayout="column"
+class="container"
 >
-    <div class="el-container" fxFlex="33%">
-        <mat-form-field>
-            <mat-label>Items to sort</mat-label>
-            <textarea 
-            matInput 
-            formControlName="toSort" 
-            cdkTextareaAutosize 
-            cdkAutosizeMinRows=10 
-            cdkAutosizeMaxRows=10></textarea>
-        </mat-form-field>
+    <div
+    fxFlex="10%"
+    fxLayout="row"
+    fxLayoutAlign="end center"
+    >
+        <button
+            type="button"
+            mat-icon-button 
+            (click)="openDialog()"
+        >
+            <mat-icon>info</mat-icon>
+        </button>
+        <button
+            type="button"
+            mat-icon-button 
+            (click)="signOut()"
+        >
+            <mat-icon>exit_to_app</mat-icon>
+        </button>
     </div>
-    <div class="el-container" fxFlex="17.5%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30%">
-        <mat-form-field fxFlex="10%" [hideRequiredMarker]="true">
-            <mat-label>Choose an algorithm</mat-label>
-            <mat-select
-            formControlName="algorithm"
-            >
-                <mat-option *ngFor="let algoName of algorithmNames$ | async" [value]="algoName">{{algoName | algoNameFormatter}}</mat-option>
-            </mat-select
-            >      
-        </mat-form-field>
-        <button 
-        type="submit" 
-        fxFlex="10%"
-        mat-flat-button 
-        color="primary">Let's sort!</button>
-    </div>
-    <div class="el-container" fxFlex="33%">
-        <mat-form-field >
-            <mat-label>Sorted output</mat-label>
-            <textarea 
-            matInput 
-            cdkTextareaAutosize 
-            cdkAutosizeMinRows=10 
-            cdkAutosizeMaxRows=10
-            disabled
-            [value]="(sortingResponse$ | async)?.sortedOutput | sortedOutputFormatter"
-            ></textarea>
-        </mat-form-field>    
-    </div>
-</form>
+    <form 
+        [formGroup]="sortingForm"
+        (ngSubmit)="onSubmit()"
+        fxFlex="90%"
+        fxLayout="row" 
+        fxLayoutAlign="space-between center"
+    >
+        <div class="container" fxFlex="33%">
+            <mat-form-field>
+                <mat-label>Items to sort</mat-label>
+                <textarea 
+                    matInput 
+                    formControlName="toSort" 
+                    cdkTextareaAutosize 
+                    cdkAutosizeMinRows=9 
+                    cdkAutosizeMaxRows=9></textarea>
+            </mat-form-field>
+        </div>
+        <div class="container" fxFlex="17.5%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30%">
+            <mat-form-field fxFlex="10%" [hideRequiredMarker]="true">
+                <mat-label>Algorithm</mat-label>
+                <mat-select
+                    formControlName="algorithm"
+                >
+                    <mat-option *ngFor="let algoName of algorithmNames$ | async" [value]="algoName">{{algoName | algoNameFormatter}}</mat-option>
+                </mat-select
+                >      
+            </mat-form-field>
+            <button
+                class="regular-button"
+                type="submit" 
+                [disabled]="sortingForm.invalid"
+                fxFlex="10%"
+                mat-flat-button 
+                color="primary">Let's sort!
+            </button>
+        </div>
+        <div class="container" fxFlex="33%">
+            <mat-form-field >
+                <mat-label>Sorted output</mat-label>
+                <textarea 
+                    matInput 
+                    cdkTextareaAutosize 
+                    cdkAutosizeMinRows=9
+                    cdkAutosizeMaxRows=9
+                    disabled
+                    [value]="(sortingResponse$ | async)?.sortedOutput | sortedOutputFormatter"
+                ></textarea>
+            </mat-form-field>    
+        </div>
+    </form>
+</div>

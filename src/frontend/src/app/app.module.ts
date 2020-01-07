@@ -20,7 +20,7 @@ import { environment } from '../environments/environment';
 import { JwtInterceptor } from './util/interceptor/jwt.interceptor';
 import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor';
 import { SnackComponent } from './util/snack/snack.component';
-import { SortingComponent } from './sorting/sorting/sorting.component';
+import { SortingComponent, InfoDialog } from './sorting/sorting/sorting.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlgoNameFormatter } from './sorting/algo-name-formatter.pipe';
 import { SortedOutputFormatter } from './sorting/sorted-output-formatter.pipe';
@@ -32,7 +32,8 @@ import { SortingService } from './sorting/sorting.service';
     SnackComponent,
     SortingComponent,
     AlgoNameFormatter,
-    SortedOutputFormatter
+    SortedOutputFormatter,
+    InfoDialog
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,7 @@ import { SortingService } from './sorting/sorting.service';
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}
   ],
-  entryComponents: [SnackComponent],
+  entryComponents: [SnackComponent, InfoDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

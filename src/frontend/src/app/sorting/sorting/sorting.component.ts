@@ -6,7 +6,8 @@ import { SortingResponse } from '../sorting.DTO.model';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducer';
-import { DisplaySnackMessages } from 'src/app/store/core.actions';
+import { DisplaySnackMessages, DisplayDialog } from 'src/app/store/core.actions';
+import { SignOut } from 'src/app/auth/store/auth.actions';
 
 @Component({
   selector: 'app-sorting',
@@ -45,4 +46,36 @@ export class SortingComponent implements OnInit {
       )
   }
 
+  signOut(){
+    this.store.dispatch(new SignOut());
+  }
+
+  openDialog(){
+    this.store.dispatch(new DisplayDialog(InfoDialog));
+  }
+
+}
+
+@Component({
+  selector: 'app-info-dialog',
+  styleUrls: [],
+  template: `
+    <h1 mat-dialog-title>Tips & Hints</h1>
+    <div mat-dialog-content>
+      <mat-list>
+        <mat-list-item *ngFor="let info of infos">
+          <mat-icon matListIcon>bubble_chart</mat-icon>
+          <span>{{info}}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>  
+  `
+})
+export class InfoDialog {
+  readonly infos = [
+    "Type in some elements, choose an algorithm, then press Let's sort!",
+    "Currently, valid elements are Integers, Decimals and Strings",
+    "You can use spaces and line separators to divide elements",
+    "The more elements you sort, the less the noise in execution time!"
+  ]
 }
