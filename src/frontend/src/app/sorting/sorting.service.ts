@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { SortingRequest, SortingResponse } from './sortingHTTP.model';
+import { SortingRequest, SortingResponse } from './sorting.DTO.model';
 
 @Injectable()
 export class SortingService {

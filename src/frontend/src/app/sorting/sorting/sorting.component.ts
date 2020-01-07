@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { SortingService } from '../sorting.service';
-import { SortingResponse } from '../sortingHTTP.model';
+import { SortingResponse } from '../sorting.DTO.model';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.reducer';
@@ -27,7 +27,6 @@ export class SortingComponent implements OnInit {
 
   private initForm() {
     this.algorithmNames$ = this.sortingService.getAlgorithmNames$();
-    this.sortingResponse$ = of(new SortingResponse([], 0));  
 
     this.sortingForm = new FormGroup({
       'toSort': new FormControl('', Validators.required),
