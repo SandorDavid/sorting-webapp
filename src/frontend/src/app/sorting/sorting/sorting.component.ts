@@ -58,7 +58,13 @@ export class SortingComponent implements OnInit {
 
 @Component({
   selector: 'app-info-dialog',
-  styleUrls: [],
+  styles: [`
+  @media only screen and (max-width: 599.5px){
+    mat-list-item {
+      margin-bottom: calc(60px - 10vw);
+    }
+  }
+  `],
   template: `
     <h1 mat-dialog-title>Tips & Hints</h1>
     <div mat-dialog-content>

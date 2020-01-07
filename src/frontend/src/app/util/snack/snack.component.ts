@@ -10,14 +10,13 @@ import { MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material';
       <div
         class="snack-component"
         fxLayout="row"
-        fxLayoutAlign="space-evenly center"
+        fxLayoutAlign="space-between center"
       >
-        <div fxFlex="90">
+        <div fxFlex="90%">
           {{ message }}
         </div>
     
         <button
-          fxFlex="10"
           (click)="close(i)"
           mat-icon-button
         >

@@ -2,11 +2,13 @@
 
 #app
     width: 100vw
-    height: 100vh
-    background-color: map-get($sortingwebapp-primary, 600)
+    min-height: 100vh
+    overflow: auto
+    @media screen and (max-width: $break-small)
+        padding: 12.5% 0
 
 #route
-    height: 75vh
+    min-height: 75vh
     padding: 4%
     background-color: #fafafa
-    border-radius: 50px
+    border-radius: 6vh

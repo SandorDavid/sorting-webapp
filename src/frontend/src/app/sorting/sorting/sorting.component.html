@@ -1,6 +1,5 @@
 <div 
 fxLayout="column"
-class="container"
 >
     <div
     fxFlex="10%"
@@ -26,10 +25,16 @@ class="container"
         [formGroup]="sortingForm"
         (ngSubmit)="onSubmit()"
         fxFlex="90%"
-        fxLayout="row" 
+        fxLayout="row wrap" 
         fxLayoutAlign="space-between center"
+        fxLayoutAlign.lt-sm="space-evenly center"
+        fxLayoutGap.lt-sm="4% grid"
     >
-        <div class="container" fxFlex="33%">
+        <div 
+            fxFlex="33%"
+            fxFlexOrder.lt-sm="2"
+            fxFlex.lt-sm="48%"
+        >
             <mat-form-field>
                 <mat-label>Items to sort</mat-label>
                 <textarea 
@@ -40,7 +45,17 @@ class="container"
                     cdkAutosizeMaxRows=9></textarea>
             </mat-form-field>
         </div>
-        <div class="container" fxFlex="17.5%" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30%">
+        <div 
+            fxFlex="19%"
+            fxFlex.lt-md="25%"
+            fxFlexOrder.lt-sm="1"
+            fxFlex.lt-sm="60%"
+            
+            fxLayout="column" 
+            fxLayoutAlign="center center" 
+            fxLayoutGap="30%"
+            fxLayoutGap.lt-sm="10%"
+        >
             <mat-form-field fxFlex="10%" [hideRequiredMarker]="true">
                 <mat-label>Algorithm</mat-label>
                 <mat-select
@@ -59,7 +74,11 @@ class="container"
                 color="primary">Let's sort!
             </button>
         </div>
-        <div class="container" fxFlex="33%">
+        <div 
+            fxFlex="33%"
+            fxFlexOrder.lt-sm="3"
+            fxFlex.lt-sm="48%"
+        >
             <mat-form-field >
                 <mat-label>Sorted output</mat-label>
                 <textarea 
@@ -67,6 +86,8 @@ class="container"
                     cdkTextareaAutosize 
                     cdkAutosizeMinRows=9
                     cdkAutosizeMaxRows=9
+                    cdkAutosizeMinRows.lt-sm=5
+                    cdkAutosizeMaxRows.lt-sm=5
                     disabled
                     [value]="(sortingResponse$ | async)?.sortedOutput | sortedOutputFormatter"
                 ></textarea>

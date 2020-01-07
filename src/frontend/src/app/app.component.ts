@@ -24,10 +24,10 @@ enum AuthenticationState {
         'background-color': '#1e88e5'
       })),
       state(AuthenticationState.signIn, style({
-        'background-color': '#fa8100'
+        'background-color': '#5E35B1'
       })),
       state(AuthenticationState.signUp, style({
-        'background-color': '#ffeb3b'
+        'background-color': '#F57F17'
       })),
       transition('* <=> *', [
         group([

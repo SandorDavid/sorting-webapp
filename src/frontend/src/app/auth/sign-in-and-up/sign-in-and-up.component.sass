@@ -1,10 +1,13 @@
+@import 'src/styles.sass'
+    
 #container
-    height: 100%
+    min-height: 100%
     width: 100%
 
 #form-div
-    border-left: 1px solid grey
     height: 100%
+    @media screen and (min-width: $break-small)
+        border-left: 1px solid grey
 
 mat-form-field
     width: 80%
