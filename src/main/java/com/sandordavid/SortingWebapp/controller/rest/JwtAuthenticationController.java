@@ -12,7 +12,7 @@ import javax.validation.Valid;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/auth")
 public class JwtAuthenticationController {
 
