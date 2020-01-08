@@ -8,7 +8,7 @@
   </parent>
 
   <artifactId>backend</artifactId>
-  <packaging>war</packaging>
+<!--  <packaging>war</packaging>-->
   <version>1.0</version>
 
   <name>backend</name>
@@ -73,37 +73,37 @@
 
   <build>
       <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.1.1</version>
-          <executions>
-            <execution>
-              <phase>package</phase>
-              <goals><goal>copy</goal></goals>
-              <configuration>
-                <artifactItems>
-                  <artifactItem>
-                    <groupId>com.heroku</groupId>
-                    <artifactId>webapp-runner</artifactId>
-                    <version>9.0.30.0</version>
-                    <destFileName>webapp-runner.jar</destFileName>
-                  </artifactItem>
-                </artifactItems>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.3</version>
-          <configuration>
-            <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-            <packagingExcludes>WEB-INF/classes/application.template.properties</packagingExcludes>
-            <warName>sortingwebapp</warName>
-          </configuration>
-        </plugin>
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-dependency-plugin</artifactId>-->
+<!--          <version>3.1.1</version>-->
+<!--          <executions>-->
+<!--            <execution>-->
+<!--              <phase>package</phase>-->
+<!--              <goals><goal>copy</goal></goals>-->
+<!--              <configuration>-->
+<!--                <artifactItems>-->
+<!--                  <artifactItem>-->
+<!--                    <groupId>com.heroku</groupId>-->
+<!--                    <artifactId>webapp-runner</artifactId>-->
+<!--                    <version>9.0.30.0</version>-->
+<!--                    <destFileName>webapp-runner.jar</destFileName>-->
+<!--                  </artifactItem>-->
+<!--                </artifactItems>-->
+<!--              </configuration>-->
+<!--            </execution>-->
+<!--          </executions>-->
+<!--        </plugin>-->
+<!--        <plugin>-->
+<!--          <groupId>org.apache.maven.plugins</groupId>-->
+<!--          <artifactId>maven-war-plugin</artifactId>-->
+<!--          <version>3.2.3</version>-->
+<!--          <configuration>-->
+<!--            <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>-->
+<!--            <packagingExcludes>WEB-INF/classes/application.template.properties</packagingExcludes>-->
+<!--            <warName>sortingwebapp</warName>-->
+<!--          </configuration>-->
+<!--        </plugin>-->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <executions>
