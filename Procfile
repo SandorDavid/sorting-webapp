@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -war backend/target/sortingwebapp.war
+web: java $JAVA_OPTS -jar backend/target/dependency/webapp-runner.jar --port $PORT backend/target/*.war
