@@ -42,7 +42,7 @@
                 <goal>npm</goal>
               </goals>
               <configuration>
-                <arguments>run build prod</arguments>
+                <arguments>run-script prod</arguments>
               </configuration>
             </execution>
             <execution>
