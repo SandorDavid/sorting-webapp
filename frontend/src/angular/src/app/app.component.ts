@@ -40,7 +40,7 @@ enum AuthenticationState {
 })
 export class AppComponent {
 
-  private authenticationState$: Observable<AuthenticationState>;
+  authenticationState$: Observable<AuthenticationState>;
 
   constructor(private store: Store<AppState>) {}
 
