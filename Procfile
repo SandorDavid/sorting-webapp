@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT $JAVA_OPTS -war backend/target/sortingwebapp.war

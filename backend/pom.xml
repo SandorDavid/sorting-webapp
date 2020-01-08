@@ -78,7 +78,7 @@
           <artifactId>maven-war-plugin</artifactId>
           <version>3.2.3</version>
           <configuration>
-            <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
+<!--            <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>-->
             <packagingExcludes>WEB-INF/classes/application.template.properties</packagingExcludes>
             <warName>sortingwebapp</warName>
           </configuration>
