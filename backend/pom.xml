@@ -11,8 +11,6 @@
   <packaging>jar</packaging>
   <version>1.0</version>
 
-  <name>backend</name>
-
   <properties>
     <postgresql.version>42.2.9</postgresql.version>
     <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
@@ -20,7 +18,6 @@
     <reflections.version>0.9.11</reflections.version>
     <lombok.version>1.18.10</lombok.version>
   </properties>
-
 
   <dependencies>
     <dependency>
@@ -70,44 +67,12 @@
     </dependency>
   </dependencies>
 
-
   <build>
       <plugins>
         <plugin>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
         </plugin>
-<!--        <plugin>-->
-<!--          <groupId>org.apache.maven.plugins</groupId>-->
-<!--          <artifactId>maven-dependency-plugin</artifactId>-->
-<!--          <version>3.1.1</version>-->
-<!--          <executions>-->
-<!--            <execution>-->
-<!--              <phase>package</phase>-->
-<!--              <goals><goal>copy</goal></goals>-->
-<!--              <configuration>-->
-<!--                <artifactItems>-->
-<!--                  <artifactItem>-->
-<!--                    <groupId>com.heroku</groupId>-->
-<!--                    <artifactId>webapp-runner</artifactId>-->
-<!--                    <version>9.0.30.0</version>-->
-<!--                    <destFileName>webapp-runner.jar</destFileName>-->
-<!--                  </artifactItem>-->
-<!--                </artifactItems>-->
-<!--              </configuration>-->
-<!--            </execution>-->
-<!--          </executions>-->
-<!--        </plugin>-->
-<!--        <plugin>-->
-<!--          <groupId>org.apache.maven.plugins</groupId>-->
-<!--          <artifactId>maven-war-plugin</artifactId>-->
-<!--          <version>3.2.3</version>-->
-<!--          <configuration>-->
-<!--            <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>-->
-<!--            <packagingExcludes>WEB-INF/classes/application.template.properties</packagingExcludes>-->
-<!--            <warName>sortingwebapp</warName>-->
-<!--          </configuration>-->
-<!--        </plugin>-->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <executions>
