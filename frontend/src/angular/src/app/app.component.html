@@ -1,0 +1,16 @@
+<div 
+    id="app" 
+    [@authenticationState]="authenticationState$ | async" 
+    fxLayout="row" 
+    fxLayoutAlign="center center"
+>
+    <div 
+        id="route" 
+        fxFlex="75%" 
+        
+        fxLayout="row" 
+        fxLayoutAlign="center center"
+    >
+        <router-outlet></router-outlet>
+    </div>
+</div>
