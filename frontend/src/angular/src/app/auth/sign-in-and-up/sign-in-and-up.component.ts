@@ -32,8 +32,8 @@ import { User } from '../user.model';
 })
 export class SignInAndUpComponent implements OnInit {
 
-  private hidePassword: boolean;
-  private isSignUpMode$: Observable<boolean>;
+  hidePassword: boolean;
+  isSignUpMode$: Observable<boolean>;
 
   constructor(private store: Store<AppState>) {}
 

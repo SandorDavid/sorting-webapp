@@ -8,10 +8,8 @@
   </parent>
 
   <artifactId>backend</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <version>1.0</version>
-
-  <name>backend</name>
 
   <properties>
     <postgresql.version>42.2.9</postgresql.version>
@@ -20,7 +18,6 @@
     <reflections.version>0.9.11</reflections.version>
     <lombok.version>1.18.10</lombok.version>
   </properties>
-
 
   <dependencies>
     <dependency>
@@ -70,18 +67,11 @@
     </dependency>
   </dependencies>
 
-
   <build>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.3</version>
-          <configuration>
-            <packagingExcludes>WEB-INF/lib/tomcat-*.jar</packagingExcludes>
-            <packagingExcludes>WEB-INF/classes/application.template.properties</packagingExcludes>
-            <warName>sortingwebapp</warName>
-          </configuration>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>

@@ -37,15 +37,6 @@
               </goals>
             </execution>
             <execution>
-              <id>npm run build</id>
-              <goals>
-                <goal>npm</goal>
-              </goals>
-              <configuration>
-                <arguments>run build --prod</arguments>
-              </configuration>
-            </execution>
-            <execution>
               <id>prod</id>
               <goals>
                 <goal>npm</goal>
