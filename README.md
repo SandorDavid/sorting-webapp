@@ -1,4 +1,4 @@
-# Sorting Webapp
+# Sorting Webapp ([Demo](https://sorting-web-app.herokuapp.com/))
 
 A simple Webapp that utilizes my shorting algorithm implementations
 
@@ -11,14 +11,14 @@ A simple Webapp that utilizes my shorting algorithm implementations
 ## Known limitations & possible improvements
 
 - Codewise
-    - Due to a problem in frontend build with [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin), I couldn't use prod build to exchange environment files (JS related errors at runtime, after deployment)
-    - Inability to control Java static resources, so no sophisticated redirecting methods to index.html on HTTP 404 errors 
+    - When building the frontend app with [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin), I couldn't use `npm run-script prod` to exchange environment files (JS related errors at runtime, after deployment)
+    - Due to an inability to control Java static resources, no sophisticated redirecting methods exist for index.html on HTTP 404 errors
 - Misc
     - More atomic and feature related GIT commits needed + branching
-    - More tests needed
+    - More testing needed
 
 ## Build and deploy
 
-- Set env variables detailed in `application.properties` at backend level 
+- Set env variables detailed in `application.properties` residing at backend level 
 - Run `mvn clean install` at root level
-- Then run the resulting `.jar` with `java -jar backend/target/SortingWebApp.jar` at root level
+- Execute the resulting `.jar` with `java -jar backend/target/SortingWebApp.jar` at root level
