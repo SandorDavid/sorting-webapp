@@ -5,17 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexRedirectController implements ErrorController {
+public class IndexController {
 
-    final static String PATH = "/error";
-
-    @RequestMapping(PATH)
-    public String handleError(){
+    @RequestMapping("/")
+    public String getIndex(){
         return "forward:/index.html";
     }
 
-    @Override
-    public String getErrorPath() {
-        return PATH;
-    }
 }
