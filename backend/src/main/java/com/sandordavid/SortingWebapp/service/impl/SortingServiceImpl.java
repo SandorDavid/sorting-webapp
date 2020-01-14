@@ -28,7 +28,7 @@ public class SortingServiceImpl implements SortingService {
     }
 
     @Override
-    public SortingResponse splitAndSort(SortingRequest sortingRequest) throws Exception {
+    public SortingResponse<? extends Comparable<?>> splitAndSort(SortingRequest sortingRequest) throws Exception {
         Class<? extends Sorter> sorterClass = getAllAlgorithms()
                 .stream()
                 .filter(c -> c.getSimpleName().equals(sortingRequest.getAlgorithm()))
@@ -37,7 +37,7 @@ public class SortingServiceImpl implements SortingService {
 
         Sorter sorter = sorterClass.getDeclaredConstructor().newInstance();
         List<String> unsortedStringList = Arrays.asList(sortingRequest.getToSort().trim().split("\\s+"));
-        List unsortedList = parseList(unsortedStringList);
+        List<? extends Comparable<?>> unsortedList = parseList(unsortedStringList);
 
         return new SortingResponse(sorter.sort(unsortedList), sorter.lastExecutionTime());
     }
@@ -52,7 +52,7 @@ public class SortingServiceImpl implements SortingService {
                 .collect(Collectors.toSet());
     }
 
-    private List parseList(List<String> unsortedStringList) {
+    private List<? extends Comparable<?>> parseList(List<String> unsortedStringList) {
             try {
                 return unsortedStringList
                         .stream()

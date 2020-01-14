@@ -9,5 +9,5 @@ public interface SortingService {
 
     List<String> getAlgorithmNames();
 
-    <T extends Comparable<T>> SortingResponse<T> splitAndSort(SortingRequest sortingRequest) throws Exception;
+    SortingResponse<? extends Comparable<?>> splitAndSort(SortingRequest sortingRequest) throws Exception;
 }
