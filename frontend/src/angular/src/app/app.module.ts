@@ -20,34 +20,27 @@ import { environment } from '../environments/environment';
 import { JwtInterceptor } from './util/interceptor/jwt.interceptor';
 import { HttpErrorInterceptor } from './util/interceptor/http-error.interceptor';
 import { SnackComponent } from './util/snack/snack.component';
-import { SortingComponent, InfoDialog } from './sorting/sorting/sorting.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AlgoNameFormatter } from './sorting/algo-name-formatter.pipe';
-import { SortedOutputFormatter } from './sorting/sorted-output-formatter.pipe';
 import { SortingService } from './sorting/sorting.service';
+import { SortingModule } from './sorting/sorting.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SnackComponent,
-    SortingComponent,
-    AlgoNameFormatter,
-    SortedOutputFormatter,
-    InfoDialog
+    SnackComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AngularMaterialModule,
-    AuthModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([CoreEffects, AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot({ routerState: RouterState.Minimal}),
+    AuthModule,
+    SortingModule
   ],
   providers: [
     AuthGuard,
@@ -55,7 +48,7 @@ import { SortingService } from './sorting/sorting.service';
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}
   ],
-  entryComponents: [SnackComponent, InfoDialog],
+  entryComponents: [SnackComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
