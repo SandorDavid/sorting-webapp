@@ -13,23 +13,23 @@ export class CoreEffects {
     @Effect({dispatch: false})
     displaySnackMessages$ = this.actions$
         .pipe(
-            
+
             ofType(CoreActions.DISPLAY_SNACK_MESSAGES),
 
             map((action: CoreActions.DisplaySnackMessages) => {
                 return action.payload;
             }),
-            
-            tap((errList: Array<String>) => {
+
+            tap((msgList: Array<String>) => {
                 this.snackBar.openFromComponent(SnackComponent, {
                     duration: 8000,
                     verticalPosition: 'bottom',
                     horizontalPosition: 'center',
-                    data: errList
+                    data: msgList
                 });
             })
         )
-    
+
     @Effect({dispatch: false})
     displayDialog$ = this.actions$
         .pipe(
