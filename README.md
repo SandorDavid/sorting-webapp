@@ -1,7 +1,8 @@
 # Sorting Webapp ([Demo](https://sorting-web-app.herokuapp.com/))
 
-A simple Webapp that utilizes my sorting algorithm implementations. 
-Demo application is hosted on a free plan at Heroku. Please be patient, because it takes time for them to load at first.
+A simple Webapp that utilizes my sorting algorithm implementations.
+
+This demo application is hosted on a free plan at Heroku. Please be patient, because it takes time for it to load at first!
 
 ## Stack
 
