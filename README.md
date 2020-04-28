@@ -1,6 +1,6 @@
 # Sorting Webapp ([Demo](https://sorting-web-app.herokuapp.com/))
 
-A simple Webapp that utilizes my shorting algorithm implementations
+A simple Webapp that utilizes my sorting algorithm implementations
 
 ## Stack
 
