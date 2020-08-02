@@ -2,7 +2,7 @@
 
 A simple Webapp that utilizes my sorting algorithm implementations.
 
-This demo application is hosted on a free plan at Heroku. Please be patient, because it takes time for it to load at first!
+This demo application is hosted on a free plan at Heroku. Please be patient, because **it takes time for it to load at first**!
 
 ## Stack
 
