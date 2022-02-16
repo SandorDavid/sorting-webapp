@@ -12,7 +12,7 @@
   <version>1.0</version>
 
   <properties>
-    <postgresql.version>42.2.9</postgresql.version>
+    <postgresql.version>42.3.3</postgresql.version>
     <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
     <junit.version>4.12</junit.version>
     <reflections.version>0.9.11</reflections.version>
